@@ -3,7 +3,18 @@ import Button from '../ui/Button';
 import CreateCabinForm from '../features/cabins/CreateCabinForm';
 import Modal from '../../ui/Modal';
 
-function AddCabin() {}
+function AddCabin() {
+  return (
+    <Modal>
+      <Modal.Open>
+        <Button>Add new cabin</Button>
+      </Modal.Open>
+      <Modal.Window>
+        <CreateCabinForm />
+      </Modal.Window>
+    </Modal>
+  );
+}
 
 // function AddCabin() {
 //   const [isOpenModal, setIsOpenModal] = useState(false);
