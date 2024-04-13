@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import HiXMark from 'react-icons/hi2';
 import { createPortal } from 'react-dom';
+import { createContext, useState } from 'react';
 
 const StyledModal = styled.div`
   position: fixed;
@@ -51,7 +52,18 @@ const Button = styled.button`
   }
 `;
 
-function Modal({ children, onClose }) {
+const ModalContext = createContext();
+
+function Modal({ children }) {
+  const [openName, setOpenName] = useState('');
+
+  const close = () => setOpenName('');
+  const open = setOpenName;
+}
+
+function Open({ children, open }) {}
+
+function Window({ children, onClose }) {
   return createPortal(
     <Overlay>
       <StyledModal>
@@ -64,5 +76,8 @@ function Modal({ children, onClose }) {
     document.body
   );
 }
+
+Modal.Open = Open;
+Modal.Window = Window;
 
 export default Modal;
